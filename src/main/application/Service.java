@@ -100,5 +100,18 @@ public class Service {
         return filteredcostumers;
     }
 
+    public ArrayList<Patient> filterPatientsForDrugForDisease(String disease) {
+        ArrayList<Patient> filteredpatients = new ArrayList<>();
+        for (Patient p : patientRepository.getAll()) {
+            for (Medikament m : p.getDrugs()) {
+                if (m.getDisease() == disease) {
+                    filteredpatients.add(p);
+                    break;
+                }
+            }
+        }
+        return filteredpatients;
+    }
+
 
 }

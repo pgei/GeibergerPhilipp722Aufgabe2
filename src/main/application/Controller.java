@@ -120,6 +120,20 @@ public class Controller {
         }
     }
 
+    public void filterDisease(Scanner scanner) {
+        System.out.println("Bitte gebe die Krankheit an:");
+        String disease = scanner.nextLine();
+        ArrayList<Patient> resultdisease = service.filterPatientsForDrugForDisease(disease);
+        if (resultdisease.isEmpty()) {
+            System.out.println("Keine Patienten gefunden!");
+        } else {
+            System.out.println("Hier ist die Liste der Patienten:");
+            for (Patient p : resultdisease) {
+                System.out.println(p.toString());
+            }
+        }
+    }
+
 
 
 }
