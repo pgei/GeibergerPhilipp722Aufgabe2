@@ -34,7 +34,7 @@ public class Patient implements ID {
      */
     @Override
     public String toString() {
-        return "Patient "+this.id+": (Name "+this.name+", Alter "+this.age+", Diagnose "+this.diagnosis+" Medikamente "+this.drugs.toString()+")";
+        return "Patient "+this.id+": (Name "+this.name+", Alter "+this.age+", Diagnose "+this.diagnosis+", Medikamente "+this.drugs.toString()+")";
     }
 
 }

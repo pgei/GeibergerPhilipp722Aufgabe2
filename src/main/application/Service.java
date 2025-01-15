@@ -105,7 +105,7 @@ public class Service {
         ArrayList<Patient> filteredpatients = new ArrayList<>();
         for (Patient p : patientRepository.getAll()) {
             for (Medikament m : p.getDrugs()) {
-                if (m.getDisease() == disease) {
+                if (m.getDisease().equals(disease)) {
                     filteredpatients.add(p);
                     break;
                 }
