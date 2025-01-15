@@ -90,5 +90,15 @@ public class Service {
         patientRepository.delete(id);
     }
 
+    public ArrayList<Patient> filterPatientsForDiagnosis(String diagnosis) {
+        ArrayList<Patient> filteredcostumers = new ArrayList<>();
+        for (Patient p : patientRepository.getAll()) {
+            if (p.getDiagnosis().equals(diagnosis)) {
+                filteredcostumers.add(p);
+            }
+        }
+        return filteredcostumers;
+    }
+
 
 }

@@ -41,7 +41,8 @@ public class App {
                     6. Rufe Patient auf
                     7. Aktualisiere Patient
                     8. Entferne Patient
-                    9. Beende Anwendung
+                    9. Filtere Patienten auf Diagnose
+                    10. Beende Anwendung
                     ++++++++++++++++++++++++++++
                     """);
             try {
@@ -72,6 +73,9 @@ public class App {
                         controller.deletePatient(scanner);
                         break;
                     case 9:
+                        controller.filterDiagnosis(scanner);
+                        break;
+                    case 10:
                         System.out.println("System wird heruntergefahren!");
                         running = false;
                         break;

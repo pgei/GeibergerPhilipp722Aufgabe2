@@ -107,6 +107,19 @@ public class Controller {
         service.deletePatient(Integer.parseInt(scanner.nextLine()));
     }
 
+    public void filterDiagnosis(Scanner scanner) {
+        System.out.println("Bitte gebe die Diagnose an:");
+        ArrayList<Patient> result = service.filterPatientsForDiagnosis(scanner.nextLine());
+        if (result.isEmpty()) {
+            System.out.println("Keine Patienten mit dieser Diagnose gefunden!");
+        } else {
+            System.out.println("Hier ist eine Liste der gefundenen Patienten:");
+            for (Patient p : result) {
+                System.out.println(p.toString());
+            }
+        }
+    }
+
 
 
 }
