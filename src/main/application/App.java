@@ -1,6 +1,7 @@
 package main.application;
 
 import main.model.Medikament;
+import main.model.Patient;
 import main.repository.InMemoryRepository;
 
 import java.util.Scanner;
@@ -36,7 +37,11 @@ public class App {
                     2. Rufe Medikament auf
                     3. Aktualisiere Medikament
                     4. Entferne Medikament
-                    5. Beende Anwendung
+                    5. Erstelle Patient
+                    6. Rufe Patient auf
+                    7. Aktualisiere Patient
+                    8. Entferne Patient
+                    9. Beende Anwendung
                     ++++++++++++++++++++++++++++
                     """);
             try {
@@ -55,6 +60,18 @@ public class App {
                         controller.deleteDrug(scanner);
                         break;
                     case 5:
+                        controller.createPatient(scanner);
+                        break;
+                    case 6:
+                        controller.getPatient(scanner);
+                        break;
+                    case 7:
+                        controller.updatePatient(scanner);
+                        break;
+                    case 8:
+                        controller.deletePatient(scanner);
+                        break;
+                    case 9:
                         System.out.println("System wird heruntergefahren!");
                         running = false;
                         break;
@@ -74,8 +91,9 @@ public class App {
      * @param args  Argumente der Kommandozeile
      */
     public static void main(String[] args) {
-        InMemoryRepository<Medikament> products = new InMemoryRepository<Medikament>();
-        Service s = new Service(products);
+        InMemoryRepository<Medikament> drugs = new InMemoryRepository<Medikament>();
+        InMemoryRepository<Patient> patients = new InMemoryRepository<Patient>();
+        Service s = new Service(drugs, patients);
         Controller c = new Controller(s);
         App application = new App(c);
         application.start();
