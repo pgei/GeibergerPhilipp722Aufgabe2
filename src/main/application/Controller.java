@@ -134,6 +134,22 @@ public class Controller {
         }
     }
 
+    public void sortPatientDrugs(Scanner scanner) {
+        System.out.println("Bitte gebe die Id des Patienten an:");
+        int sortid = Integer.parseInt(scanner.nextLine());
+        if (service.getPatient(sortid) != null) {
+            System.out.println("Sollen Medikamente aufsteigend (true) oder absteigend (false oder alles andere) sortiert werden:");
+            boolean ascending = Boolean.parseBoolean(scanner.nextLine());
+            ArrayList<Medikament> sortresult = service.sortDrugsBySpecificCostumer(sortid, ascending);
+            System.out.println("Hier sind die Medikamente von Patient mit Id "+sortid);
+            for (Medikament m : sortresult) {
+                System.out.println(m);
+            }
+        } else {
+            System.out.println("Kein Patient mit dieser Id existiert!");
+        }
+    }
+
 
 
 }

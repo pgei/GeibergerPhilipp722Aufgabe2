@@ -5,6 +5,7 @@ import main.model.Patient;
 import main.repository.InMemoryRepository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -113,5 +114,15 @@ public class Service {
         return filteredpatients;
     }
 
+    public ArrayList<Medikament> sortDrugsBySpecificCostumer(int id, boolean ascending) {
+        Patient p = patientRepository.get(id);
+        ArrayList<Medikament> sorteddrugs = p.getDrugs();
+        if (ascending) {
+            sorteddrugs.sort(Comparator.comparing(Medikament::getPrice));
+        } else {
+            sorteddrugs.sort(Comparator.comparing(Medikament::getPrice).reversed());
+        }
+        return sorteddrugs;
+    }
 
 }
